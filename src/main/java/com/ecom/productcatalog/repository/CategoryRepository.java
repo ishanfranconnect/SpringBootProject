@@ -6,5 +6,5 @@ import com.ecom.productcatalog.model.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category,Long> {
-    
+
 }
