@@ -6,9 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ecom.productcatalog.model.Product;
 import com.ecom.productcatalog.service.ProductService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 @RestController
+@CrossOrigin(origins = "http://localhost:5173/")
 public class ProductController {
     private final ProductService productService;
 
