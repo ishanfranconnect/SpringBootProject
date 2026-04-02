@@ -1,7 +1,7 @@
 package com.ecom.productcatalog.model;
 
 import java.util.Set;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,6 +21,6 @@ public class Category {
         cascade = CascadeType.ALL,
         fetch = FetchType.LAZY
     )
+    @JsonIgnore
     private Set<Product>products;
-
 }
