@@ -36,7 +36,7 @@ function App() {
   }
 
   const filterProducts=products.filter(products=>{
-    return(selectCategories ? products.category.id===selectCategories: null);
+    return(selectCategories ? products.category.id===selectCategories: true);
   });
   return (
     <div className="container">
