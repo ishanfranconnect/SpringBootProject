@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.ecom.productcatalog.model.Product;
 import com.ecom.productcatalog.repository.ProductRepository;
-
 @Service
 public class newProductService {
 
     private final ProductRepository productRepository;
-
     public ProductService(ProductRepository productRepository){
         this.productRepository = productRepository;
     }
@@ -31,9 +29,9 @@ public class newProductService {
         return productRepository.save(product);
     }
 
+    
     public Product updateProduct(Long id, Product product){
         Product existing = getProductById(id);
-
         existing.setName(product.getName());
         existing.setDescription(product.getDescription());
         existing.setPrice(product.getPrice());
@@ -42,8 +40,7 @@ public class newProductService {
 
         return productRepository.save(existing);
     }
-
-  
+    
     public void deleteProduct(Long id){
         Product product = getProductById(id);
         productRepository.delete(product);
@@ -57,7 +54,6 @@ public class newProductService {
                 .filter(p -> categoryId == null || p.getCategory().getId().equals(categoryId))
                 .toList();
     }
-
     public List<Product> searchProducts(String keyword){
         return productRepository.findByNameContainingIgnoreCase(keyword);
     }
