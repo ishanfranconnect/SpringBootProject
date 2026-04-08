@@ -61,4 +61,8 @@ public class newProductService {
     public List<Product> searchProducts(String keyword){
         return productRepository.findByNameContainingIgnoreCase(keyword);
     }
+    public List<Product>getProductAbovePrice(Double price){
+        return productRepository.findByPriceGreaterThan(price);
+    }
+
 }
