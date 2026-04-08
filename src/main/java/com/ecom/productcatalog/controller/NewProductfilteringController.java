@@ -1,14 +1,10 @@
 package com.ecom.productcatalog.controller;
-
 import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
 import com.ecom.productcatalog.model.Product;
 import com.ecom.productcatalog.service.ProductService;
-
 @RestController
 @RequestMapping("/api/products")
 @CrossOrigin(origins = "http://localhost:5173/")
@@ -18,9 +14,7 @@ public class NewProductfilteringController {
 
     public ProductController(ProductService productService){
         this.productService = productService;
-    }
-
-  
+    }    
     @GetMapping
     public Page<Product> getAllProducts(Pageable pageable){
         return productService.getAllProducts(pageable);
@@ -47,7 +41,10 @@ public class NewProductfilteringController {
         return "Deleted Successfully";
     }
 
-
+    @GetMapping("/price/above/{price}")
+    public List<Product>getProductsAbovePrice(@PathVariable Double Price){
+        return productService.getProductsAbovePrice(price);
+    }
   @GetMapping("/filter")
   public List<Product>filterProducts(
     @RequestParam(required=false) String name;
