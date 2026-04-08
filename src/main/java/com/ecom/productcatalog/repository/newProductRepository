@@ -3,6 +3,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ecom.productcatalog.model.Product;
 
 public interface newProductRepository extends JpaRepository<Product, Long> {
-
+    List<Product> findByPriceGreaterThan(Double price);
     List<Product> findByNameContainingIgnoreCase(String keyword);
 }
