@@ -22,4 +22,9 @@ public class CategoryController {
     public List<Category> getAllCategories(){
         return categoryService.getAllCategories();
     }
+    @GetMapping("/api/categories")
+    public List<Category>getAllCategories(){
+        return categoryService.getAllCategories();
+    }
+    
 }
