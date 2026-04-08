@@ -20,6 +20,7 @@ public class NewProductfilteringController {
         return productService.getAllProducts(pageable);
     }
 
+    
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id){
         return productService.getProductById(id);
@@ -45,6 +46,7 @@ public class NewProductfilteringController {
     public List<Product>getProductsAbovePrice(@PathVariable Double Price){
         return productService.getProductsAbovePrice(price);
     }
+    
   @GetMapping("/filter")
   public List<Product>filterProducts(
     @RequestParam(required=false) String name;
@@ -54,8 +56,22 @@ public class NewProductfilteringController {
   ){
     return productService.searchProducts(keyword);
   }
-@GetMapping("/search")
-  public List<Product>searchProduct(@RequestParam String keyword){
-    return ProductService.searchProducts(keyword);
+    @GetMapping("/api/productss")
+    public List<Product> product(){
+        
+    }
+   @GetMapping("/search")
+   public List<Product>searchProduct(@RequestParam String keyword){
+     return ProductService.searchProducts(keyword);
   }
+    @PutMapping("/price/above/{price2}")
+    public List<product>getProductAbovePrice(@PathVariable Double price){
+        return productService.getProductsAbovePrice(price);
+    }
+
+    @DeleteMapping("/api/delete")
+    public List<product>getDeleteAllData(){
+        return productDelete.getProductAbovePrice(delete data by id);
+    }
+
 }
