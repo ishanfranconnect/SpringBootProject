@@ -11,6 +11,8 @@ import com.ecom.productcatalog.repository.UserRepository;
 public class UserService {
 
    public final UserRespository userRepository;
+   private final BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+   
   public UserService(UserRespository userRepository){
     this.userRepository=userRepository;
   }
@@ -20,15 +22,19 @@ public class UserService {
     if(existing.isPresent()){
       throw new RuntimeException("Email already exists);
     }
+     user.setPassword(encoder.encode(user.getPassword()));
     return userRepository.save(user);
   }
 
   // for login
   public User login(String email,String password){
     User user=userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("User not found"));
-    if(!user.getPassword().equals(password)){
-      throw new RuntimeException("Invalid Password");
-    }
+    // if(!user.getPassword().equals(password)){
+    //   throw new RuntimeException("Invalid Password");
+    // }
+     if(!encode.match(password,user.getPassword())){
+        throw new RuntimeException("Invalid Password);
+     }
     return user;
   }
   
